@@ -1,26 +1,70 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000;
+  --foreground: #ffffff;
+  --font-serif: 'Cinzel', 'Playfair Display', 'Didot', 'Bodoni MT', 'Georgia', serif;
+  --font-editorial: 'Cormorant Garamond', 'Georgia', serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-serif);
+  --font-editorial: var(--font-editorial);
+  --font-sans: var(--font-sans);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html, body {
+  background-color: #000000;
+  color: #ffffff;
+  font-family: var(--font-sans);
+  margin: 0;
+  padding: 0;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Typography Helpers */
+.font-monumental {
+  font-family: var(--font-serif);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.font-editorial-serif {
+  font-family: var(--font-editorial);
+}
+
+/* Subtle mysterious grain texture and ambient vignette */
+.bg-vignette {
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.03) 0%, rgba(0, 0, 0, 0.8) 75%, #000000 100%);
+}
+
+.ambient-glow {
+  background: radial-gradient(circle at 50% 45%, rgba(255, 255, 255, 0.06) 0%, rgba(200, 210, 230, 0.02) 40%, rgba(0, 0, 0, 0) 70%);
+}
+
+/* Subtle breathing animation for mysterious depth */
+@keyframes ethereal-pulse {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(1.05);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.animate-ethereal {
+  animation: ethereal-pulse 10s ease-in-out infinite;
+}
+
+/* Clean text selection */
+::selection {
+  background: #ffffff;
+  color: #000000;
 }
